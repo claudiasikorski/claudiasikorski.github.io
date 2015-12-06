@@ -12,12 +12,12 @@ highlighter: pygments
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : mrandrewandrade.com/blog 
+title : http://claudiasikorski.github.io
 tagline: Technology, Start-ups, Robotics, Energy, Machine Learning, Statistics and Economics
 author :
-  name : Andrew Andrade 
-  email : andrew@andrewandrade.ca 
-  github : mrandrewandrade 
+  name : Claudia Sikorski
+  email : c.sikorski272@gmail.com 
+  github : claudiasikorski 
   twitter : mrandrewandrade 
   feedburner : feedname
 
