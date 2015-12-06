@@ -3,7 +3,7 @@ _theme_packages/*
 *.swp
 Thumbs.db
 .DS_Store
-
+TODO/*
 !.gitkeep
 
 .rbenv-version
