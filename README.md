@@ -1,4 +1,5 @@
-# Andrew Andrade's Custom Personal Blog  
+
+# Claudia Sikorski's Custom Personal Blog  
 
 My personal blog built using Jekyll and hosted for free on Github pages!
 
@@ -45,4 +46,3 @@ browse blog at [localhost:4000](http://localhost:4000)
 	run in directory: `bundle exec jekyll serve -w`    
 
 ### Enjoy!
-
