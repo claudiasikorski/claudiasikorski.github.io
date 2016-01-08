@@ -22,9 +22,9 @@ Each day I would ask patients about their risk factors for CAD, and so for my fi
 
 ![](/figures/cad-project.png)
 
-
-
 First let us load the required packages we will be using to construct this figure.
+
+
 
 {% highlight r %}
 ##library(reshape2)
@@ -48,9 +48,12 @@ options(stringsAsFactors = FALSE)
 riskf <- read.csv("http://claudiasikorski.github.io/datasets/cvd/cad-project.csv")
 {% endhighlight %} 
 
+
+
+
 Next, I used subset to extract all the risk factors for males and females. 
 
-{% highlight %}
+{% highlight r %}
 subsetM <- subset(riskf, riskf$Province == "Males")
 subsetF <- subset(riskf, riskf$Province == "Females")
 
@@ -60,7 +63,7 @@ provinces = riskf$Province[c(TRUE,rep(FALSE,2) )]
 
 Now let's make dataframes such that we can easily access the data for specific risk factors. I created a function that would do this in order to avoid the same manual process for each factor (yay for functions in R!)
 
-{% highlight %}
+{% highlight r %}
 df.maker <- function(...) {
   df <- data.frame(cbind(...))
   colnames(df)[1] <- "Female"
@@ -82,39 +85,35 @@ heavy_drinking <- df.maker(subsetF$Heavy.Drinking, subsetM$Heavy.Drinking)
 fruit_veg <- df.maker(subsetF$Fruit.and.Vegetable.Consumption, subsetM$Fruit.and.Vegetable.Consumption)
 active <- df.maker(subsetF$Physically.Active, subsetM$Physically.Active)
 stress <- df.maker(subsetF$Perceived.Life.Stress, subsetM$Perceived.Life.Stress)
-
 {% endhighlight %}
+
 Now it's time to plot the data, if I wanted to only plot the data for smoking, I would do the following:
 
-{% highlight %}
-plot1 <- ggplot(smoking, aes(provinces, value )) +  geom_bar(aes(fill = variable), position = "dodge", stat="identity") + scale_fill_discrete(name="Gender") + xlab("Provinces and Territories") + ylab("Percentage(%)") + ggtitle("Smoking") + theme_bw() + theme(panel.border = element_blank()) + theme(plot.title = element_text(size=13),  axis.title.x = element_text(size=11), axis.title.y = element_text(size=11)) + geom_hline(yintercept= 18.1) + theme(legend.position = (c(1.5,0.8)), legend.direction = "horizontal"
-
+{% highlight r %}
+plot1 <- ggplot(smoking, aes(provinces, value )) +  geom_bar(aes(fill = variable), position = "dodge", stat="identity") + scale_fill_discrete(name="Gender") + xlab("Provinces and Territories") + ylab("Percentage(%)") + ggtitle("Smoking") + theme_bw() + theme(panel.border = element_blank()) + theme(plot.title = element_text(size=13),  axis.title.x = element_text(size=11), axis.title.y = element_text(size=11)) + geom_hline(yintercept= 18.1) + theme(legend.position = (c(1.5,0.8)), legend.direction = "horizontal")
 
 {% endhighlight %}
 
 Looking at how to plot one graph, it is clear that I can write a generic function for easy plotting. I defined my arguments as risks(this is the varible I will replace with correct risk factor), riskf(where the data is coming from), t for titles, and mean(from Stats Canada links)
 
-{% endhighlight %}    {r , fig.width=16, fig.height=16}
-      #listing titles for plot function to use
-      title_list <- c("Smoking in Canada 2014", "Exposure to Second Hand Smoke in Canada 2014","BMI(overweight or obese) in Canada 2014", 
+{% highlight r %}
+
+#listing titles for plot function to use
+title_list <- c("Smoking in Canada 2014", "Exposure to Second Hand Smoke in Canada 2014","BMI(overweight or obese) in Canada 2014", 
                 "Diabetes in Canada 2014", "High Blood Pressure in Canada 2014", "Heavy Drinking in Canada 2012", 
                 "Fruit and Vegetable Consumption in Canada 2014", "Active Lifestyle in Canada 2014", "Percieved Stress in Canada 2014")
-      #listing means for plot function to use
-      means_list <- c(18.1, 3.9, 54, 6.7, 17.7, 17.4, 39.5, 53.7, 23.0)
+#listing means for plot function to use
+means_list <- c(18.1, 3.9, 54, 6.7, 17.7, 17.4, 39.5, 53.7, 23.0)
 
-)
-
-      plot_function <- function(risks, riskf, t, mean){
-  
-      plot <- ggplot(risks, aes(provinces, value )) +  geom_bar(aes(fill = variable), position = "dodge", stat="identity") + xlab("Provinces and Territories") + ylab("Percentage(%)")  + labs(title = t) + theme_bw() + theme(legend.position="none") + theme(panel.border = element_blank()) + theme(plot.title = element_text(size=13),
-  axis.title.x = element_text(size=11), axis.title.y = element_text(size=11)) + geom_hline(yintercept= mean)
-return(plot)
+plot_function <- function(risks, riskf, t, mean){
+  plot <- ggplot(risks, aes(provinces, value )) +  geom_bar(aes(fill = variable), position = "dodge", stat="identity") + xlab("Provinces and Territories") + ylab("Percentage(%)")  + labs(title = t) + theme_bw() + theme(legend.position="none") + theme(panel.border = element_blank()) + theme(plot.title = element_text(size=13), (size=11), axis.title.y = element_text(size=11)) + geom_hline(yintercept= mean)
+  return(plot)
 }
 
 {% endhighlight %}`
 Now that I have this function, plotting is easy! Notice that the means are represnted by a horizontal line (used geom_hline(yintercept= mean to do this)
 
-{% highlight %}
+{% highlight r %}
 
 p1 <- plot_function(smoking, riskf, title_list[1], means_list[1])
 p2 <- plot_function(second_smoking, riskf, title_list[2], means_list[2])
@@ -130,7 +129,7 @@ p9 <- plot_function(stress, riskf, title_list[9], means_list[9])
 
 I did not include a legend in the plot function, completed by the adding + theme(legend.position="none") as I want a common legend for the plot. In order to do this, I will extract the legend from plot1 (the example done for smoking above). I learnt how to do this by reading the [following](https://github.com/hadley/ggplot2/wiki/Share-a-legend-between-two-ggplot2-graphs)
 
-{% highlight %}
+{% highlight r %}
 #extract legend
 g_legend<-function(a.gplot){
   tmp <- ggplot_gtable(ggplot_build(a.gplot))
@@ -144,7 +143,7 @@ legend <- g_legend(plot1)
 
 The last step is to arrange the nine plots together, I decided to display them as a 3x3 figure. 
 
-{% highlight %}
+{% highlight r %}
 
 p10 <- grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8, p9, ncol=3, legend)
 
