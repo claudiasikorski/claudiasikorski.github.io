@@ -20,14 +20,14 @@ During my work term at Hamilton General Hospital as a Research Assistant in Card
 
 Each day I would ask patients about their risk factors for CAD, and so for my first mini project I decided to look at the risk factors for CAD by gender and by province in Canada. I was curious about the percentage of the population that had these risk factors and how they differed by gender. In the end I made this figure to create a simple way of looking at the various risk factors... 
 
-![](/pdfs/cad-project.png)
+![](/figures/cad-project.png)
 
 
 
 First let us load the required packages we will be using to construct this figure.
 
 {% highlight r %}
-library(reshape2)
+##library(reshape2)
 library(ggplot2)
 library(plyr)
 library(grid)
