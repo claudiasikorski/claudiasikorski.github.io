@@ -15,17 +15,17 @@ categories:
 
 # What is Git?
 
-`git` is a distributed version control system.  TO: write in own words
+`git` is a distributed version control system that allows you to make multuple versions of a project AND shows you the changes that were made over time. You can also revert back to undo those changes if neccessary. Super useful, right? It is also great for collaborations as it allows team of people to work together on the same file and track changes made by each person. 
 
 # Installing and Configuring Git
 
-I started out with Windows but I quickly realized that Windows is terrible so I dual booted with Linux Mint TODO: put link to how to dual boot.  
+I started out with Windows but I quickly realized that Windows is terrible so I dual booted with Linux Mint. To dual boot, read the following [tutorial](http://apcmag.com/how-to-dual-boot-windows-8-and-linux.htm/)
 
 After linux mint was installed, installing `git` was as simple as:
 
     sudo apt-get install git
 
-After confirming that I wanted to installed, it was installed!  As simple as that.  If you wanted to improve your terminal experience, consider configuring linux mint according to [this guide] (TODO)
+After confirming that I wanted to installed, it was installed!  As simple as that.  If you wanted to improve your terminal experience, consider configuring linux mint according to [this guide] (https://github.com/mrandrewandrade/dotfiles)
 
 I then created a free account on [github](http://github.com) as seen [here](https://github.com/claudiasikorski/).
 
@@ -100,10 +100,6 @@ Once the origin is added, I can run:
 This means I am telling git to push (submit my code) to origin (location declared before) on the `master` (main) branch).  Since the repository is simple, I only need one branch which is by default called `master`
 
 And that is it!  I have added, commited and pushed my first commit to github!
-
-# Pushing new edits
-
-Coming soon! +++++
 
 
 
