@@ -27,13 +27,13 @@ Each day I would ask patients about their risk factors for CAD, and so for my fi
 First let us load the required packages we will be using to construct this figure.
 
 ```
-  library(reshape2)
-  library(ggplot2)
-  library(plyr)
-  library(grid)
-  library(gridExtra)
-  library(devtools)
-  library(easyGgplot2) 
+    library(reshape2)
+    library(ggplot2)
+    library(plyr)
+    library(grid)
+    library(gridExtra)
+    library(devtools)
+    library(easyGgplot2) 
 
 ```
 
@@ -96,17 +96,17 @@ plot1 <- ggplot(smoking, aes(provinces, value )) +  geom_bar(aes(fill = variable
 
 Looking at how to plot one graph, it is clear that I can write a generic function for easy plotting. I defined my arguments as risks(this is the varible I will replace with correct risk factor), riskf(where the data is coming from), t for titles, and mean(from Stats Canada links)
 
-```{r , fig.width=16, fig.height=16}
-#listing titles for plot function to use
-title_list <- c("Smoking in Canada 2014", "Exposure to Second Hand Smoke in Canada 2014","BMI(overweight or obese) in Canada 2014", 
+```    {r , fig.width=16, fig.height=16}
+      #listing titles for plot function to use
+      title_list <- c("Smoking in Canada 2014", "Exposure to Second Hand Smoke in Canada 2014","BMI(overweight or obese) in Canada 2014", 
                 "Diabetes in Canada 2014", "High Blood Pressure in Canada 2014", "Heavy Drinking in Canada 2012", 
                 "Fruit and Vegetable Consumption in Canada 2014", "Active Lifestyle in Canada 2014", "Percieved Stress in Canada 2014")
-#listing means for plot function to use
-means_list <- c(18.1, 3.9, 54, 6.7, 17.7, 17.4, 39.5, 53.7, 23.0)
+      #listing means for plot function to use
+      means_list <- c(18.1, 3.9, 54, 6.7, 17.7, 17.4, 39.5, 53.7, 23.0)
 
 )
 
-plot_function <- function(risks, riskf, t, mean){
+      plot_function <- function(risks, riskf, t, mean){
   
       plot <- ggplot(risks, aes(provinces, value )) +  geom_bar(aes(fill = variable), position = "dodge", stat="identity") + xlab("Provinces and Territories") + ylab("Percentage(%)")  + labs(title = t) + theme_bw() + theme(legend.position="none") + theme(panel.border = element_blank()) + theme(plot.title = element_text(size=13),
   axis.title.x = element_text(size=11), axis.title.y = element_text(size=11)) + geom_hline(yintercept= mean)
