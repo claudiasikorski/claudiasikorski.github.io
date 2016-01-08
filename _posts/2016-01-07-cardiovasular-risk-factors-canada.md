@@ -39,7 +39,7 @@ library(easyGgplot2)
 Please note, easyGgplot2 is not a stadard package on CRAN yet.  Please install is maually using the instructions [here](https://github.com/kassambara/easyGgplot2).
 
 
-Now let us load up the data.  This data is from Staistics Canada from the following links for [smoking](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health74b-eng.htm), [second hand smoke exposure](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health96b-eng.htm), [BMI](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health82b-eng.htm), [diabetes](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health54b-eng.htm), [high blood pressure](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health70a-eng.htm), [heavy drinking](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health80b-eng.htm), [fruit and vegetable consumption, 5 times or more per day](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health90b-eng.htm), [physical activity](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health78b-eng.htm)(defined as having any physical activity during leisure time), and [perceived life stress, as quite a lot](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health107b-eng.htm). 
+Now let us load up the data.  This data is from Staistics Canada from the following links for [smoking](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health74b-eng.htm), [second hand smoke exposure](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health96b-eng.htm), [BMI](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health82b-eng.htm), [diabetes](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health54b-eng.htm), [high blood pressure](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health70a-eng.htm), [heavy drinking](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health80b-eng.htm), [fruit and vegetable consumption, 5 times or more per day](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health90b-eng.htm), [physical activity, defined as having any physical activity during leisure time](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health78b-eng.htm), and [perceived life stress, as quite a lot](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/health107b-eng.htm). 
 
 In the end, I combined all the data into one .csv for the percentage the population with these factors from 2014(with the exception of heaving drinking as the only available data was from 2012). If a value was missing, I would use the value from the previous year. 
 
@@ -150,6 +150,7 @@ The last step is to arrange the nine plots together, I decided to display them a
 p10 <- grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8, p9, ncol=3, legend)
 
 ```
+
 # Next steps
 
 Now that I created this figure it's easy for me to look at the difference between men and women by province for the risk factors for CAD. In my next blog post, I will discuss these results!
