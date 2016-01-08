@@ -27,13 +27,13 @@ Each day I would ask patients about their risk factors for CAD, and so for my fi
 First let us load the required packages we will be using to construct this figure.
 
 ```
-library(reshape2)
-library(ggplot2)
-library(plyr)
-library(grid)
-library(gridExtra)
-library(devtools)
-library(easyGgplot2) 
+  library(reshape2)
+  library(ggplot2)
+  library(plyr)
+  library(grid)
+  library(gridExtra)
+  library(devtools)
+  library(easyGgplot2) 
 
 ```
 
@@ -45,8 +45,8 @@ Now let us load up the data.  This data is from Staistics Canada from the follow
 In the end, I combined all the data into one .csv for the percentage the population with these factors from 2014(with the exception of heaving drinking as the only available data was from 2012). If a value was missing, I would use the value from the previous year. 
 
 ```
-options(stringsAsFactors = FALSE)
-riskf <- read.csv("http://claudiasikorski.github.io/datasets/cvd/cad-project.csv")
+    options(stringsAsFactors = FALSE)
+    riskf <- read.csv("http://claudiasikorski.github.io/datasets/cvd/cad-project.csv")
 
 ``` 
 
